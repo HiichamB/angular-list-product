@@ -1,0 +1,15 @@
+<div class="card product-card">
+  <img [src]="image" class="card-img-top product-img" alt="Product Image" />
+  <div class="card-body">
+    <h5 class="card-title product-title">{{ name }}</h5>
+    <p class="card-text truncate-3">{{ description }}</p>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <span class="product-price fw-bold">{{ price }}</span>
+      <div class="rating">
+        <i class="bi bi-star"></i>
+
+        <span class="ms-1 text-muted">{{ rating }}</span>
+      </div>
+    </div>
+  </div>
+</div>

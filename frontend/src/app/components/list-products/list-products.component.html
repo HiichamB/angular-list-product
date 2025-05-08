@@ -1,0 +1,47 @@
+<div class="container my-4">
+  <div class="row mb-3">
+    <div class="col-md-8">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Rechercher un produit"
+        [(ngModel)]="searchText"
+        (input)="onSearchChange()"
+      />
+    </div>
+    <div class="col-md-4 text-md-end mt-2 mt-md-0">
+      <button class="btn btn-primary" (click)="toggleSortDirection()">
+        Trier {{ sortDirection === "asc" ? "Z-A" : "A-Z" }}
+      </button>
+    </div>
+  </div>
+  <div
+    *ngIf="!loading && filteredProducts.length === 0"
+    class="text-center text-muted my-5"
+  >
+    Aucun produit trouvé
+  </div>
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Chargement...</span>
+    </div>
+  </div>
+  <div *ngIf="!loading && filteredProducts.length > 0">
+    <div class="row">
+      <div
+        class="col-md-4 mb-4 d-flex"
+        *ngFor="let product of filteredProducts"
+      >
+        <app-card-product
+          class="w-100 h-100"
+          [image]="product.image"
+          [name]="product.title"
+          [description]="product.description"
+          [price]="product.price"
+          [category]="product.category"
+          [rating]="product.rating.rate"
+        ></app-card-product>
+      </div>
+    </div>
+  </div>
+</div>
